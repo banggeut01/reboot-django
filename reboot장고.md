@@ -65,6 +65,18 @@
   $ python manage.py startapp articles
   ```
 
+* app 등록
+
+  ```python
+  # reboot/settings.py
+  INSTALLED_APPS = [
+      'articles',
+      # ...
+  ]
+  ```
+
+  
+
 * `reboot/urls.py` 설정
 
   * include
@@ -107,3 +119,65 @@
       return render(request, 'articles/index.html')
   ```
 
+# Django
+
+## Model 정의
+
+* title : charfield
+* content : textfield
+* created_at : auto_now_add, datetimefield
+* updated_at : auto_now, datetimefield
+
+```python
+from django.db import models
+
+# Create your models here.
+class Aricle(models.Model):
+    title = models.CharField(max_length=30)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+```
+
+
+
+### 마이그레이션 
+
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
+
+
+
+### admin 설정 ## error
+
+```bash
+$ python manage.py createsuperuser
+```
+
+```python
+# articles/admin.py
+from django.contrib import admin
+from .models import Article
+class ArticleAdmin(admin.ModelAdmin):
+    list_display = ['title', 'content', 'created_at', 'updated_at']
+admin.site.register(Article, ArticleAdmin)
+```
+
+http://127.0.0.1:8000/admin/
+
+
+
+## CRUD
+
+* C
+  * `/new/` : 글 작성 form
+  * `/create/` : 저장 후 index로 보내기(redirect)
+* R
+  * `/1/` : detail 함수에서 처리
+* D
+  * `/1/delete/` : 삭제 후 index로 보내기
+* U
+  * `/1/edit/` : 글 수정 form
+  * `/1/update/` : 저장 후 Read로 보내기
