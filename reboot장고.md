@@ -44,6 +44,26 @@
 
 * URL을 보자
 
+> POST로 바꿀 때
+
+* `html`에서 method 값 바꿔주기
+
+* 토큰 넣어주기
+
+  ```html
+  {% csrf_token %}
+  ```
+
+  ```bash
+  # GET log message
+  [10/Sep/2019 11:31:43] "GET /articles/20/update/?title=%EB%B0%B0%EC%A7%B1%EA%B3%A0%ED%8C%8C&content=%E3%85%A0%E3%85%A0 HTTP/1.1" 302 0
+  
+  # POST log message
+  [10/Sep/2019 11:45:23] "POST /articles/22/update/ HTTP/1.1" 302 0
+  ```
+
+  
+
 # Review
 
 * 가상환경 만들기
