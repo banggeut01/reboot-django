@@ -1,3 +1,47 @@
+# 장고를 시작하면서...
+
+> 주의할 점 3가지!
+
+* 불러오지 않은 것은 절대 쓸 수 없다!!
+  * import해서 가져와야 한다!
+* 클래스는 `CamelCase`, 함수나 변수는 `snake_case`
+  * 일반적으로 app은 `복수형`, class는 `단수형`
+* 재사용성 높이자!
+  * 변수, 함수, 클래스 등
+
+> 자주 발견되는 오류
+
+* 무조건 `model`부터 정의하고 `makemigrations`을 하는 습관
+
+  ```bash
+  # error message
+  No changes detected
+  ```
+
+  db > django > models > class Model
+
+> 데이터베이스 변경되었을 때
+
+- db.splite3 삭제
+- migrations > 0001*.py와 같은 파일 삭제
+  - 0001*.py와 같은 파일을 직접 수정하는 것은 불가능
+- 새롭게 `makemigrations`, `migrate`
+
+> HTML FORM 작성시
+
+* `form action=` 지정시 끝에 `/` 붙이기
+
+  * 예) `form action="/article/create/"` (o)
+
+    `form action="/article/create"`(x) => GET방식 일 땐, 동작하는 것 처럼 보일 수 있으나 꼭 `/`를 붙여주자!
+
+  ```
+  # error message
+  You called this URL via POST, ... (note the trailing slash)
+  ```
+
+  
+
 # Review
 
 * 가상환경 만들기
@@ -29,6 +73,18 @@
   ```bash
   $ pip install django 
   ```
+
+  `settings.py`의 INSTALLED_APPS에 `django_extiensions` 있다면,
+
+  ```bash
+  # error message
+  ModuleNotFoundError: No module named 'django_extensions'
+  
+  # solution
+  $ pip install django-extensions
+  ```
+
+  이러한 error가 뜨면, 가상환경에서 설치한 것이 아닌, 글로벌 영역에서 설치했던 것이다.
 
 * git 설정
 
