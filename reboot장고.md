@@ -1,4 +1,4 @@
-# 장고를 시작하면서...
+# 장고 - 자주 보는 오류
 
 > 주의할 점 3가지!
 
@@ -62,7 +62,12 @@
   [10/Sep/2019 11:45:23] "POST /articles/22/update/ HTTP/1.1" 302 0
   ```
 
-  
+
+> such no table ... articles_Article
+
+* Model 명 수정한 경우 다시 migrate해줘야 한다.
+* migrate하게 되면
+  * 앱이름_모델명 table 생겨남
 
 # Review
 
