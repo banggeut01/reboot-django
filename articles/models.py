@@ -10,9 +10,10 @@ class Reporter(models.Model):
 class Article(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()
+    image = models.ImageField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
+    # reporter = models.ForeignKey(Reporter, on_delete=models.CASCADE)
 
 class Comment(models.Model):
     content = models.CharField(max_length=140)

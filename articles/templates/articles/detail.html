@@ -1,20 +1,14 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1>{{ article.id }}번 글</h1>
-  <h2>{{ article.title }}</h2>
-  <p>작성일자 : {{ article.created_at }}</p>
-  <p>수정일자 : {{ article.updated_at }}</p>
-  <hr>
-  <p>{{ article.content }}</p>
-  <a href="/articles/">목록으로</a>
-  <a href="/articles/{{ article.pk }}/delete/">삭제하기!</a>
-  <a href="/articles/{{ article.pk }}/edit/">수정하기!</a>
-</body>
-</html>
+{% extends 'articles/base.html' %}
+
+{% block body %}
+<h1>{{ article.id }}번 글</h1>
+<h2>{{ article.title }}</h2>
+<img src="{{ article.image.url }}" alt="{{ article.image.name }}" width="500">
+<p>작성일자 : {{ article.created_at }}</p>
+<p>수정일자 : {{ article.updated_at }}</p>
+<hr>
+<p>{{ article.content }}</p>
+<a href="/articles/">목록으로</a>
+<a href="/articles/{{ article.pk }}/delete/">삭제하기!</a>
+<a href="/articles/{{ article.pk }}/edit/">수정하기!</a>
+{% endblock %}

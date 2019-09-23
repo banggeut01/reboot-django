@@ -1,22 +1,21 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <form action="/articles/create/" method="GET">
-    <div>
-      <label for="title">제목</label>
-      <input type="text" id="title" name="title">
-    </div>
-    <div>
-      <label for="content">내용</label>
-      <input type="textarea" id="content" name="content">
-    </div>
-    <button type="submit">글 작성하기!</button>
-  </form>
-</body>
-</html>
+{% extends 'articles/base.html' %}
+
+{% block body %}
+<!-- 
+  file 받기 위해 enctype 
+  POST요청으로만 처리 가능 -->
+<form action="/articles/create/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div>
+    <label for="title">제목</label>
+    <input type="text" id="title" name="title">
+  </div>
+  <div>
+    <label for="content">내용</label>
+    <input type="textarea" id="content" name="content">
+  </div>
+  <label for="image">이미지 : </label>
+  <input type="file" name="image" id="image">
+  <button type="submit">글 작성하기!</button>
+</form>
+{% endblock %}
