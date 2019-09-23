@@ -69,6 +69,18 @@
 * migrate하게 되면
   * 앱이름_모델명 table 생겨남
 
+* 설치 오류
+
+  ```shell
+  ModuleNotFoundError: No module named 'bootstrap4'
+  ```
+
+  ```shell
+  $ pip install django-bootstrap4
+  ```
+
+  
+
 # Review
 
 * 가상환경 만들기
