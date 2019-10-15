@@ -67,8 +67,9 @@
 
 * Model 명 수정한 경우 다시 migrate해줘야 한다.
 * migrate하게 되면
-  * 앱이름_모델명 table 생겨남
-
+  
+* 앱이름_모델명 table 생겨남
+  
 * 설치 오류
 
   ```shell
@@ -77,6 +78,18 @@
 
   ```shell
   $ pip install django-bootstrap4
+  ```
+
+
+> path('signup/', views.signup, name='signup'), # accounts C
+> NameError: name 'views' is not defined
+
+* view가 없을 때 발생하는 오류
+
+* urlts.py 에서 view를 import한다.
+
+  ```python
+  from . import views
   ```
 
   
