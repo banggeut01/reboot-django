@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'articles',
     'jobs',
+    'onetomany',
+    'manytomany',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
